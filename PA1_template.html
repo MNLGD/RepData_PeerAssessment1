@@ -60,15 +60,7 @@ if (window.hljs && document.readyState && document.readyState === "complete") {
 <pre class="r"><code>data &lt;-read.csv(&quot;activity.csv&quot;,na.strings = &quot;NA&quot;,sep=&quot;,&quot;)
 bad&lt;- is.na(data$steps)
 
-complete &lt;- data[!bad,]
-print(head(complete))</code></pre>
-<pre><code>##     steps       date interval
-## 289     0 2012-10-02        0
-## 290     0 2012-10-02        5
-## 291     0 2012-10-02       10
-## 292     0 2012-10-02       15
-## 293     0 2012-10-02       20
-## 294     0 2012-10-02       25</code></pre>
+complete &lt;- data[!bad,]</code></pre>
 </div>
 <div id="what-is-mean-total-number-of-steps-taken-per-day" class="section level2">
 <h2>What is mean total number of steps taken per day?</h2>
@@ -115,6 +107,16 @@ hold$Category</code></pre>
 </div>
 <div id="imputing-missing-values" class="section level2">
 <h2>Imputing missing values</h2>
+<pre class="r"><code>#Number of Missing Values:
+print(nrow(data[bad,]))</code></pre>
+<pre><code>## [1] 2304</code></pre>
+<pre class="r"><code>data2 &lt;- data.frame()
+idb&lt;- c(1:17568)
+
+
+
+head(data2)</code></pre>
+<pre><code>## data frame with 0 columns and 0 rows</code></pre>
 </div>
 <div id="are-there-differences-in-activity-patterns-between-weekdays-and-weekends" class="section level2">
 <h2>Are there differences in activity patterns between weekdays and weekends?</h2>

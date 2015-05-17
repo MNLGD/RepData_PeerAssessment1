@@ -13,7 +13,6 @@ data <-read.csv("activity.csv",na.strings = "NA",sep=",")
 bad<- is.na(data$steps)
 
 complete <- data[!bad,]
-print(head(complete))
  
    
 ```
@@ -61,7 +60,19 @@ hold<- xAvg[which.max(xAvg$x), ]
 hold$Category
 ```
 ## Imputing missing values
+```{r ECHO=TRUE}
+
+#Number of Missing Values:
+print(nrow(data[bad,]))
 
 
+data2 <- data.frame()
+idb<- c(1:17568)
+
+
+
+head(data2)
+
+```
 
 ## Are there differences in activity patterns between weekdays and weekends?

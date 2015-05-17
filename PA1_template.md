@@ -8,17 +8,6 @@ data <-read.csv("activity.csv",na.strings = "NA",sep=",")
 bad<- is.na(data$steps)
 
 complete <- data[!bad,]
-print(head(complete))
-```
-
-```
-##     steps       date interval
-## 289     0 2012-10-02        0
-## 290     0 2012-10-02        5
-## 291     0 2012-10-02       10
-## 292     0 2012-10-02       15
-## 293     0 2012-10-02       20
-## 294     0 2012-10-02       25
 ```
 
 
@@ -101,6 +90,26 @@ hold$Category
 ```
 ## Imputing missing values
 
+```r
+#Number of Missing Values:
+print(nrow(data[bad,]))
+```
 
+```
+## [1] 2304
+```
+
+```r
+data2 <- data.frame()
+idb<- c(1:17568)
+
+
+
+head(data2)
+```
+
+```
+## data frame with 0 columns and 0 rows
+```
 
 ## Are there differences in activity patterns between weekdays and weekends?
