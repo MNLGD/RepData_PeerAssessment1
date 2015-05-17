@@ -46,7 +46,7 @@ dev.off()
 
 ```r
 # Mean Number of steps:
-mean(data$steps, na.rm=TRUE)
+mean(complete$steps)
 ```
 
 ```
@@ -55,7 +55,7 @@ mean(data$steps, na.rm=TRUE)
 
 ```r
 # Median Number of Steps:
-median(data$steps, na.rm=TRUE)
+median(complete$steps)
 ```
 
 ```
@@ -63,9 +63,42 @@ median(data$steps, na.rm=TRUE)
 ```
 ## What is the average daily activity pattern?
 
+```r
+day_act <-data.frame(Category=complete$interval, 
+                  Frequency=complete$steps)
+xAvg <- aggregate(day_act$Frequency, by=list(Category=day_act$Category), FUN=mean)
 
 
+ plot(xAvg$Category,
+       xAvg$x,        
+       type="l",
+       col="black", 
+       xlab="5 minute interval", 
+       ylab="Avg Steps", 
+       main="Frequency of Steps per 5 minute interval")
+```
 
+![](PA1_template_files/figure-html/unnamed-chunk-3-1.png) 
+
+```r
+  dev.off()
+```
+
+```
+## null device 
+##           1
+```
+
+```r
+hold<- xAvg[which.max(xAvg$x), ]
+
+#interval with max steps:
+hold$Category
+```
+
+```
+## [1] 835
+```
 ## Imputing missing values
 
 

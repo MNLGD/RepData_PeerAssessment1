@@ -31,16 +31,35 @@ hist(xSummary$x,xlab="total number of steps taken each day",main="")
 dev.off()
 
 # Mean Number of steps:
-mean(data$steps, na.rm=TRUE)
+mean(complete$steps)
 
 # Median Number of Steps:
-median(data$steps, na.rm=TRUE)
+median(complete$steps)
 ```
 ## What is the average daily activity pattern?
+```{r ECHO=TRUE}
+
+day_act <-data.frame(Category=complete$interval, 
+                  Frequency=complete$steps)
+xAvg <- aggregate(day_act$Frequency, by=list(Category=day_act$Category), FUN=mean)
 
 
+ plot(xAvg$Category,
+       xAvg$x,        
+       type="l",
+       col="black", 
+       xlab="5 minute interval", 
+       ylab="Avg Steps", 
+       main="Frequency of Steps per 5 minute interval")
+  dev.off()
+  
 
 
+hold<- xAvg[which.max(xAvg$x), ]
+
+#interval with max steps:
+hold$Category
+```
 ## Imputing missing values
 
 
