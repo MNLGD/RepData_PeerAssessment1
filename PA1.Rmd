@@ -1,0 +1,12 @@
+Peer Assessment 1
+
+```{r}
+summary(cars)
+```
+
+You can also embed plots, for example:
+
+```{r, echo=TRUE}
+plot(cars)
+```
+
