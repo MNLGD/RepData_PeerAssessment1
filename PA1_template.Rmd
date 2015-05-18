@@ -50,7 +50,7 @@ xAvg <- aggregate(day_act$Frequency, by=list(Category=day_act$Category), FUN=mea
        xlab="5 minute interval", 
        ylab="Avg Steps", 
        main="Frequency of Steps per 5 minute interval")
-  dev.off()
+
   
 
 
@@ -68,7 +68,7 @@ print(nrow(data[bad,]))
 
 data2 <- data.frame()
 data3 <- data.frame()
-idb<- c(1:17)
+idb<- c(1:17568)
 val <- mean(complete$steps)
 for(n in idb){
 if(is.na(data[n,1])){
@@ -86,10 +86,17 @@ if(is.na(data[n,1])){
 
 }
 names(data2) <-c("steps", "date","interval")
-data<-data2
 
-head(data)
 
+head(data2)
+x2 <- data.frame(Category=data2$date, 
+                  Frequency=data2$steps)
+  xSummary2 <- aggregate(x2$Frequency, by=list(Category=x2$Category), FUN=sum)
+head(data2)
+head(xSummary2)
+hist(xSummary2$x,xlab="total number of steps taken each day[Replaced data]",main="")
+  
+dev.off()
 ```
 
 ## Are there differences in activity patterns between weekdays and weekends?

@@ -70,15 +70,6 @@ xAvg <- aggregate(day_act$Frequency, by=list(Category=day_act$Category), FUN=mea
 ![](PA1_template_files/figure-html/unnamed-chunk-3-1.png) 
 
 ```r
-  dev.off()
-```
-
-```
-## null device 
-##           1
-```
-
-```r
 hold<- xAvg[which.max(xAvg$x), ]
 
 #interval with max steps:
@@ -102,7 +93,7 @@ print(nrow(data[bad,]))
 ```r
 data2 <- data.frame()
 data3 <- data.frame()
-idb<- c(1:17)
+idb<- c(1:17568)
 val <- mean(complete$steps)
 for(n in idb){
 if(is.na(data[n,1])){
@@ -120,9 +111,9 @@ if(is.na(data[n,1])){
 
 }
 names(data2) <-c("steps", "date","interval")
-data<-data2
 
-head(data)
+
+head(data2)
 ```
 
 ```
@@ -133,6 +124,52 @@ head(data)
 ## 4 37.3826 2012-10-01       15
 ## 5 37.3826 2012-10-01       20
 ## 6 37.3826 2012-10-01       25
+```
+
+```r
+x2 <- data.frame(Category=data2$date, 
+                  Frequency=data2$steps)
+  xSummary2 <- aggregate(x2$Frequency, by=list(Category=x2$Category), FUN=sum)
+head(data2)
+```
+
+```
+##     steps       date interval
+## 1 37.3826 2012-10-01        0
+## 2 37.3826 2012-10-01        5
+## 3 37.3826 2012-10-01       10
+## 4 37.3826 2012-10-01       15
+## 5 37.3826 2012-10-01       20
+## 6 37.3826 2012-10-01       25
+```
+
+```r
+head(xSummary2)
+```
+
+```
+##     Category        x
+## 1 2012-10-01 10766.19
+## 2 2012-10-02   126.00
+## 3 2012-10-03 11352.00
+## 4 2012-10-04 12116.00
+## 5 2012-10-05 13294.00
+## 6 2012-10-06 15420.00
+```
+
+```r
+hist(xSummary2$x,xlab="total number of steps taken each day[Replaced data]",main="")
+```
+
+![](PA1_template_files/figure-html/unnamed-chunk-4-1.png) 
+
+```r
+dev.off()
+```
+
+```
+## null device 
+##           1
 ```
 
 ## Are there differences in activity patterns between weekdays and weekends?
