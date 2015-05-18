@@ -88,12 +88,11 @@ if(is.na(data[n,1])){
 names(data2) <-c("steps", "date","interval")
 
 
-head(data2)
+
 x2 <- data.frame(Category=data2$date, 
                   Frequency=data2$steps)
   xSummary2 <- aggregate(x2$Frequency, by=list(Category=x2$Category), FUN=sum)
-head(data2)
-head(xSummary2)
+
 hist(xSummary2$x,xlab="total number of steps taken each day[Replaced data]",main="")
   
 dev.off()
