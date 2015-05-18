@@ -101,15 +101,38 @@ print(nrow(data[bad,]))
 
 ```r
 data2 <- data.frame()
-idb<- c(1:17568)
+data3 <- data.frame()
+idb<- c(1:17)
+val <- mean(complete$steps)
+for(n in idb){
+if(is.na(data[n,1])){
+  
+  data2[n,1]<-val
+  data2[n,2] <-data[n,2]
+  data2[n,3] <- data[n,3]
+}
+  
+ else{
+   data2[n,1]<-data[n,1]
+  data2[n,2] <-data[n,2]
+  data2[n,3] <- data[n,3]
+}
 
+}
+names(data2) <-c("steps", "date","interval")
+data<-data2
 
-
-head(data2)
+head(data)
 ```
 
 ```
-## data frame with 0 columns and 0 rows
+##     steps       date interval
+## 1 37.3826 2012-10-01        0
+## 2 37.3826 2012-10-01        5
+## 3 37.3826 2012-10-01       10
+## 4 37.3826 2012-10-01       15
+## 5 37.3826 2012-10-01       20
+## 6 37.3826 2012-10-01       25
 ```
 
 ## Are there differences in activity patterns between weekdays and weekends?
